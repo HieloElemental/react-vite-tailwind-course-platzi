@@ -3,11 +3,10 @@ import { NavLink } from "react-router-dom";
 
 const navProductCategories = [
   { path: "/", text: "All" },
-  { path: "/clothes", text: "Clothes" },
   { path: "/electronics", text: "Electronics" },
-  { path: "/furniture", text: "Furniture" },
-  { path: "/toys", text: "Toys" },
-  { path: "/others", text: "Others" },
+  { path: "/jewelery", text: "Jewelery" },
+  { path: "/mens-clothing", text: "Men's Clothing" },
+  { path: "/womens-clothing", text: "Women's Clothing" },
 ];
 
 const navRightPages = [
