@@ -1,11 +1,21 @@
-import React from 'react'
+import { Card } from "../../Components/Card";
 
 const Home = () => {
   return (
-    <div>
-      Home
-    </div>
-  )
-}
+    <>
+      <h1>Home</h1>
+      <div className='flex items-start content-around flex-wrap gap-4 px-12'>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div>
+    </>
+  );
+};
 
-export { Home } 
+export { Home };
