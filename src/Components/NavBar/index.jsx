@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
+import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 
 import { ShoppingCartContext } from "../../Contexts/ShoppingCartProvider";
 
@@ -56,7 +57,10 @@ const NavBar = () => {
       <ul className='gap-3 flex items-center'>
         <li className='dark:text-white/60'>hieloelemental@shopi.com</li>
         {renderNavItems(navRightPages)}
-        <li>&#128722; {count}</li>
+        <li className='flex items-center justify-center'>
+          <ShoppingCartIcon className='size-4' />
+          <span>{count}</span>
+        </li>
       </ul>
     </nav>
   );

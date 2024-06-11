@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { PropTypes } from "prop-types";
+import { PlusIcon } from "@heroicons/react/24/solid";
 
 import { ShoppingCartContext } from "../../Contexts/ShoppingCartProvider";
 
@@ -33,9 +34,9 @@ const Card = ({ data: { category: categoryName, image, title, price } }) => {
           </span>
           <a
             onClick={onAddHandler}
-            className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+            className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-3 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
           >
-            Add To Cart
+            <PlusIcon className='size-5 inline' /> Add to cart
           </a>
         </div>
       </div>
