@@ -5,18 +5,22 @@ const ProductDetailContext = createContext();
 
 const ProductDetailProvider = ({ children }) => {
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState({});
 
-  const onOpenProductDetail = () => {
+  const onSelectProductDetail = (product) => {
     setIsProductDetailOpen(true);
+    setSelectedProduct(product);
   };
-
-  const onCloseProductDetail = () => {
-    setIsProductDetailOpen(false);
-  };
+  const onCloseProductDetail = () => setIsProductDetailOpen(false);
 
   return (
     <ProductDetailContext.Provider
-      value={{ isProductDetailOpen, onOpenProductDetail, onCloseProductDetail }}
+      value={{
+        isProductDetailOpen,
+        onSelectProductDetail,
+        onCloseProductDetail,
+        selectedProduct,
+      }}
     >
       {children}
     </ProductDetailContext.Provider>
