@@ -45,7 +45,7 @@ const NavBar = () => {
   };
 
   return (
-    <nav className='bg-white border-gray-200 dark:bg-gray-900 dark:text-white flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light'>
+    <nav className='bg-white border-gray-200 dark:bg-gray-900 dark:text-white flex justify-between items-center fixed z-20 top-0 w-full py-5 px-8 text-sm font-light'>
       <ul className='gap-3 flex items-center'>
         <li className='font-semibold'>
           <NavLink to={"/"}>Shopi</NavLink>
