@@ -3,12 +3,17 @@ import { PropTypes } from "prop-types";
 import { PlusIcon } from "@heroicons/react/24/solid";
 
 import { ShoppingCartContext } from "../../Contexts/ShoppingCartProvider";
+import { ProductDetailContext } from "../../Contexts/ProductDetailProvider";
 
 const Card = ({ data: { category: categoryName, image, title, price } }) => {
   const { onAddHandler } = useContext(ShoppingCartContext);
+  const { onOpenProductDetail } = useContext(ProductDetailContext);
 
   return (
-    <div className='w-64 h-80 max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer'>
+    <div
+      className='w-64 h-80 max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer'
+      onClick={onOpenProductDetail}
+    >
       <figure className='relative mb-2 w-full h-4/6'>
         <span className='absolute bottom-0 left-0 bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ms-3 m-2'>
           {categoryName}
