@@ -1,5 +1,8 @@
+import { useContext } from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
+
+import { ShoppingCartContext } from "../../Contexts/ShoppingCartProvider";
 
 const navProductCategories = [
   { path: "/", text: "All" },
@@ -33,6 +36,8 @@ NavItem.propTypes = {
 };
 
 const NavBar = () => {
+  const { count } = useContext(ShoppingCartContext);
+
   const renderNavItems = (navItems) => {
     return navItems.map(({ path, text }) => {
       return <NavItem key={path} path={path} text={text}></NavItem>;
@@ -51,7 +56,7 @@ const NavBar = () => {
       <ul className='gap-3 flex items-center'>
         <li className='dark:text-white/60'>hieloelemental@shopi.com</li>
         {renderNavItems(navRightPages)}
-        <li>&#128722; 0</li>
+        <li>&#128722; {count}</li>
       </ul>
     </nav>
   );
