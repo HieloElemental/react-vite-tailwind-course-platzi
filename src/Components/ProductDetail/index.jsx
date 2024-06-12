@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { XMarkIcon } from "@heroicons/react/24/solid";
 
 import { ProductDetailContext } from "../../Contexts/ProductDetailProvider";
+import { SideMenu } from "../../Containers/SideMenu";
 
 const ProductDetail = () => {
   const {
@@ -11,17 +11,11 @@ const ProductDetail = () => {
   } = useContext(ProductDetailContext);
 
   return (
-    <aside
-      className={`${
-        isProductDetailOpen ? "flex" : "hidden"
-      } overflow-y-auto w-full h-[calc(100vh-60px)] z-10 top-[60px] right-0 rounded-l-lg max-w-xs flex-col fixed bg-gray-900 text-white border border-gray-700`}
+    <SideMenu
+      title={"Detail"}
+      isOpen={isProductDetailOpen}
+      onClose={onCloseProductDetail}
     >
-      <div className='flex justify-between items-center p-6'>
-        <h2 className='font-medium text-xl'>Details</h2>
-        <div onClick={onCloseProductDetail} className='cursor-pointer'>
-          <XMarkIcon className='size-6' />
-        </div>
-      </div>
       <figure className='px-6'>
         <img className='w-full h-full rounded-lg' src={image} alt={title} />
       </figure>
@@ -32,7 +26,7 @@ const ProductDetail = () => {
           {description}
         </span>
       </p>
-    </aside>
+    </SideMenu>
   );
 };
 

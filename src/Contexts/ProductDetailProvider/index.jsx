@@ -1,14 +1,21 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
 import { PropTypes } from "prop-types";
+
+import { ShoppingCartContext } from "../ShoppingCartProvider";
 
 const ProductDetailContext = createContext();
 
 const ProductDetailProvider = ({ children }) => {
+  const { isCheckoutOpen, onCloseCheckout } = useContext(ShoppingCartContext);
+
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState({});
 
+  isCheckoutOpen && isProductDetailOpen && setIsProductDetailOpen(false);
+
   const onSelectProductDetail = (product) => {
-    setIsProductDetailOpen(true);
+    !isProductDetailOpen && setIsProductDetailOpen(true);
+    isCheckoutOpen && onCloseCheckout();
     setSelectedProduct(product);
   };
   const onCloseProductDetail = () => setIsProductDetailOpen(false);
