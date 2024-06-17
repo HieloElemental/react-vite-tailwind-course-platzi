@@ -5,7 +5,7 @@ import { SideMenu } from "../../Containers/SideMenu";
 import { OrderCard } from "../OrderCard";
 
 const CheckoutMenu = () => {
-  const { isCheckoutOpen, onCloseCheckout, cartProducts } =
+  const { isCheckoutOpen, onCloseCheckout, cartProducts, onDeleteHandler } =
     useContext(ShoppingCartContext);
 
   return (
@@ -29,6 +29,7 @@ const CheckoutMenu = () => {
             title={title}
             imageUrl={image}
             price={price}
+            onDeleteHandler={onDeleteHandler}
           />
         ))}
       </div>

@@ -19,6 +19,12 @@ const ShoppingCartProvider = ({ children }) => {
     }
   };
 
+  const onDeleteHandler = (id) => {
+    const newCartProducts = cartProducts.filter((product) => product.id !== id);
+    setCartProducts(newCartProducts);
+    setCount(newCartProducts.length);
+  };
+
   const onCloseCheckout = () => setIsCheckoutOpen(false);
 
   return (
@@ -27,6 +33,7 @@ const ShoppingCartProvider = ({ children }) => {
         cartProducts,
         count,
         onAddHandler,
+        onDeleteHandler,
         isCheckoutOpen,
         onCloseCheckout,
       }}
