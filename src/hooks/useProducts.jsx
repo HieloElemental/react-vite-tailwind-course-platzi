@@ -15,7 +15,6 @@ const useProducts = () => {
       setProducts(data);
       setIsLoading(false);
       setError(false);
-      console.log(data);
     } catch (e) {
       setIsLoading(false);
       setError(e);
