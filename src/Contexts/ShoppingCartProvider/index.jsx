@@ -25,6 +25,12 @@ const ShoppingCartProvider = ({ children }) => {
     setCount(newCartProducts.length);
   };
 
+  const onEmptyOrdersHandler = () => {
+    setCartProducts([]);
+    setCount(0);
+    setIsCheckoutOpen(false);
+  };
+
   const onCloseCheckout = () => setIsCheckoutOpen(false);
 
   return (
@@ -34,6 +40,7 @@ const ShoppingCartProvider = ({ children }) => {
         count,
         onAddHandler,
         onDeleteHandler,
+        onEmptyOrdersHandler,
         isCheckoutOpen,
         onCloseCheckout,
       }}

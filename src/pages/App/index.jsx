@@ -2,6 +2,7 @@ import { useRoutes, BrowserRouter } from "react-router-dom";
 
 import { ShoppingCartProvider } from "../../Contexts/ShoppingCartProvider";
 import { ProductDetailProvider } from "../../Contexts/ProductDetailProvider";
+import { OrdersProvider } from "../../Contexts/OrdersProvider";
 import { ProductDetail } from "../../Components/ProductDetail";
 import { CheckoutMenu } from "../../Components/CheckoutMenu";
 import { Home } from "../Home";
@@ -30,14 +31,16 @@ const App = () => {
   return (
     <ShoppingCartProvider>
       <ProductDetailProvider>
-        <BrowserRouter>
-          <NavBar />
-          <ProductDetail />
-          <CheckoutMenu />
-          <Layout>
-            <AppRoutes />
-          </Layout>
-        </BrowserRouter>
+        <OrdersProvider>
+          <BrowserRouter>
+            <NavBar />
+            <ProductDetail />
+            <CheckoutMenu />
+            <Layout>
+              <AppRoutes />
+            </Layout>
+          </BrowserRouter>
+        </OrdersProvider>
       </ProductDetailProvider>
     </ShoppingCartProvider>
   );
