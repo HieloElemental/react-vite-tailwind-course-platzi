@@ -1,4 +1,6 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 
 import { Layout } from "../../Containers/Layout";
 import { OrdersContext } from "../../Contexts/OrdersProvider";
@@ -6,11 +8,15 @@ import { OrderCard } from "../../Components/OrderCard";
 
 const MyOrder = () => {
   const { orders } = useContext(OrdersContext);
-  console.log(orders);
 
   return (
     <Layout>
-      My Order
+      <div className='flex items-center justify-center relative w-80 mb-6'>
+        <Link to='/my-orders' className='absolute left-0'>
+          <ChevronLeftIcon className='h-6 w-6 text-white cursor-pointer' />
+        </Link>
+        <h1>My Order</h1>
+      </div>
       <div className='flex flex-col max-w-lg'>
         {orders.length === 0 && (
           <p className='text-white font-light'>
