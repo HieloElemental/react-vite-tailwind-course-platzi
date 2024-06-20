@@ -1,9 +1,9 @@
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import { PropTypes } from "prop-types";
 
-const OrderCard = ({ id, title, imageUrl, price, onDeleteHandler }) => {
+const OrderCard = ({ id, title, imageUrl, price, onDeleteHandler = false }) => {
   return (
-    <div className='flex justify-between items-center mb-3'>
+    <div className='flex justify-between items-center mb-3 gap-1'>
       <div className='flex items-center gap-2'>
         <figure className='w-20 min-w-20 h-20'>
           <img
@@ -16,10 +16,12 @@ const OrderCard = ({ id, title, imageUrl, price, onDeleteHandler }) => {
       </div>
       <div className='flex items-center gap-2'>
         <p className='text-lg font-medium'>${price}</p>
-        <XMarkIcon
-          onClick={() => onDeleteHandler(id)}
-          className='h-6 w-6 text-white cursor-pointer'
-        />
+        {onDeleteHandler && (
+          <XMarkIcon
+            onClick={() => onDeleteHandler(id)}
+            className='h-6 w-6 text-white cursor-pointer'
+          />
+        )}
       </div>
     </div>
   );
@@ -29,7 +31,7 @@ OrderCard.propTypes = {
   title: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  onDeleteHandler: PropTypes.func.isRequired,
+  onDeleteHandler: PropTypes.func,
 };
 
 export { OrderCard };

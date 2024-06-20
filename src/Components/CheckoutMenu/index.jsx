@@ -6,6 +6,7 @@ import { SideMenu } from "../../Containers/SideMenu";
 import { OrderCard } from "../OrderCard";
 
 import { calcTotalPrice } from "../../utils/calcTotalPrice";
+import { Link } from "react-router-dom";
 
 const CheckoutMenu = () => {
   const { isCheckoutOpen, onCloseCheckout, cartProducts, onDeleteHandler } =
@@ -39,17 +40,19 @@ const CheckoutMenu = () => {
       </div>
       <div className='px-6 mb-6'>
         <p className='flex justify-between items-center mb-2'>
-          <sapn className='font-light'>Total:</sapn>
-          <sapn className='font-medium text-2xl'>
+          <span className='font-light'>Total:</span>
+          <span className='font-medium text-2xl'>
             ${calcTotalPrice(cartProducts).toFixed(2)}
-          </sapn>
+          </span>
         </p>
-        <button
-          className='bg-white py-3 text-black w-full rounded-lg'
-          onClick={handleCheckoutOrder}
-        >
-          Checkout
-        </button>
+        <Link to='/my-orders/last'>
+          <button
+            className='bg-white py-3 text-black w-full rounded-lg'
+            onClick={handleCheckoutOrder}
+          >
+            Checkout
+          </button>
+        </Link>
       </div>
     </SideMenu>
   );
