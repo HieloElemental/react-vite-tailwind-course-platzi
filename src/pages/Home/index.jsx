@@ -11,6 +11,7 @@ const Home = () => {
     clearError,
     inputProductsByTitle,
     setInputProductsByTitle,
+    filteredProducts,
   } = useProducts();
 
   return (
@@ -34,9 +35,14 @@ const Home = () => {
       <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4'>
         {isLoading &&
           Array.from({ length: 15 }, (_, index) => <Skeleton key={index} />)}
-        {products.map((data) => (
-          <Card key={data.id} data={data} />
-        ))}
+        {!inputProductsByTitle &&
+          products.map((data) => <Card key={data.id} data={data} />)}
+        {inputProductsByTitle && filteredProducts.length === 0 && (
+          <p>No products found</p>
+        )}
+        {inputProductsByTitle &&
+          filteredProducts.length > 0 &&
+          filteredProducts.map((data) => <Card key={data.id} data={data} />)}
       </div>
     </>
   );

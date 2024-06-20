@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 const useProducts = () => {
   const [products, setProducts] = useState([]);
   const [inputProductsByTitle, setInputProductsByTitle] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -26,9 +27,22 @@ const useProducts = () => {
     setError(false);
   };
 
+  const filterProductsByTitle = (products, query) => {
+    return products.filter((product) =>
+      product.title.toLowerCase().includes(query.toLowerCase())
+    );
+  };
+
   useEffect(() => {
     !error && fetchData();
   }, [error]);
+
+  useEffect(() => {
+    if (inputProductsByTitle)
+      setFilteredProducts(
+        filterProductsByTitle(products, inputProductsByTitle)
+      );
+  }, [inputProductsByTitle]);
 
   return {
     products,
@@ -36,6 +50,7 @@ const useProducts = () => {
     error,
     setInputProductsByTitle,
     inputProductsByTitle,
+    filteredProducts,
     clearError,
   };
 };
