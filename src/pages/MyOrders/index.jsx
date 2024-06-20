@@ -13,9 +13,9 @@ const MyOrders = () => {
     <Layout>
       <h1>My Orders</h1>
 
-      {orders.map(({ totalPrice, totalProducts, date, id }) => {
+      {orders.map(({ totalPrice, totalProducts, date }, index) => {
         return (
-          <Link to={`/my-orders/${id}`} key={date}>
+          <Link to={`/my-orders/${index}`} key={`${date}${index}`}>
             <OrdersCard totalPrice={totalPrice} totalProducts={totalProducts} />
           </Link>
         );

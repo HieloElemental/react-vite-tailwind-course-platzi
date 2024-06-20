@@ -8,6 +8,11 @@ import { OrderCard } from "../../Components/OrderCard";
 
 const MyOrder = () => {
   const { orders } = useContext(OrdersContext);
+  const currentPath = window.location.pathname.split("/")[2];
+  const order =
+    currentPath === "last"
+      ? orders?.[orders?.length - 1]?.products
+      : orders?.[currentPath]?.products;
 
   return (
     <Layout>
@@ -18,25 +23,23 @@ const MyOrder = () => {
         <h1>My Order</h1>
       </div>
       <div className='flex flex-col max-w-lg'>
-        {orders.length === 0 && (
+        {!order && (
           <p className='text-white font-light'>
             <strong className='font-normal'>Here are no products</strong>
             <br />
             Try add a product to the cart.
           </p>
         )}
-        {orders.length > 0 &&
-          orders
-            ?.slice(-1)[0]
-            .products.map(({ id, title, image, price }) => (
-              <OrderCard
-                key={id}
-                id={id}
-                title={title}
-                imageUrl={image}
-                price={price}
-              />
-            ))}
+        {order &&
+          order.map(({ id, title, image, price }) => (
+            <OrderCard
+              key={id}
+              id={id}
+              title={title}
+              imageUrl={image}
+              price={price}
+            />
+          ))}
       </div>
     </Layout>
   );
