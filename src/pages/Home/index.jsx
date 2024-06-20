@@ -4,11 +4,25 @@ import { Skeleton } from "../../Components/Card/Skeleton";
 import { useProducts } from "../../hooks/useProducts";
 
 const Home = () => {
-  const { products, isLoading, error, clearError } = useProducts();
+  const {
+    products,
+    isLoading,
+    error,
+    clearError,
+    inputProductsByTitle,
+    setInputProductsByTitle,
+  } = useProducts();
 
   return (
     <>
-      <h1>Home</h1>
+      <h1 className='font-medium text-2xl mb-4'>Home</h1>
+      <input
+        type='text'
+        placeholder='Search Products'
+        className='rounded-lg border border-white bg-black w-80 py-2 px-4 mb-4 focus:outline-none'
+        value={inputProductsByTitle}
+        onChange={(event) => setInputProductsByTitle(event.target.value)}
+      />
       {error && (
         <Alert
           type='danger'

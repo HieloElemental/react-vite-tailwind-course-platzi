@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 const useProducts = () => {
   const [products, setProducts] = useState([]);
+  const [inputProductsByTitle, setInputProductsByTitle] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -29,7 +30,14 @@ const useProducts = () => {
     !error && fetchData();
   }, [error]);
 
-  return { products, isLoading, error, clearError };
+  return {
+    products,
+    isLoading,
+    error,
+    setInputProductsByTitle,
+    inputProductsByTitle,
+    clearError,
+  };
 };
 
 export { useProducts };
