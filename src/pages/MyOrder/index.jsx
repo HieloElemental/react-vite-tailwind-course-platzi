@@ -8,7 +8,7 @@ import { OrderCard } from "../../Components/OrderCard";
 
 const MyOrder = () => {
   const { orders } = useContext(OrdersContext);
-  const currentPath = window.location.pathname.split("/")[2];
+  const currentPath = window.location.pathname.split("/")[3];
   const order =
     currentPath === "last"
       ? orders?.[orders?.length - 1]?.products
