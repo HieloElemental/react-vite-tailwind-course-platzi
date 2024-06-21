@@ -1,9 +1,11 @@
+import { useEffect } from "react";
+
 import { Alert } from "../../Components/Alert";
 import { Card } from "../../Components/Card";
 import { Skeleton } from "../../Components/Card/Skeleton";
 import { useProducts } from "../../hooks/useProducts";
 
-const Home = () => {
+const Home = ({ category = null }) => {
   const {
     products,
     isLoading,
@@ -11,8 +13,16 @@ const Home = () => {
     clearError,
     inputProductsByTitle,
     setInputProductsByTitle,
-    filteredProducts,
+    filteredProductsByTitle,
+    filteredProductsByCategory,
+    setSelectedCategory,
   } = useProducts();
+
+  useEffect(() => {
+    if (category) {
+      setSelectedCategory(category);
+    }
+  }, [category]);
 
   return (
     <>
@@ -36,13 +46,21 @@ const Home = () => {
         {isLoading &&
           Array.from({ length: 15 }, (_, index) => <Skeleton key={index} />)}
         {!inputProductsByTitle &&
+          !category &&
           products.map((data) => <Card key={data.id} data={data} />)}
-        {inputProductsByTitle && filteredProducts.length === 0 && (
+        {!inputProductsByTitle &&
+          category &&
+          filteredProductsByCategory.map((data) => (
+            <Card key={data.id} data={data} />
+          ))}
+        {inputProductsByTitle && filteredProductsByTitle.length === 0 && (
           <p>No products found</p>
         )}
         {inputProductsByTitle &&
-          filteredProducts.length > 0 &&
-          filteredProducts.map((data) => <Card key={data.id} data={data} />)}
+          filteredProductsByTitle.length > 0 &&
+          filteredProductsByTitle.map((data) => (
+            <Card key={data.id} data={data} />
+          ))}
       </div>
     </>
   );

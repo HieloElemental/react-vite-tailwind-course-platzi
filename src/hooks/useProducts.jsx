@@ -2,8 +2,14 @@ import { useEffect, useState } from "react";
 
 const useProducts = () => {
   const [products, setProducts] = useState([]);
+  const [filteredProductsByTitle, setFilteredProductsByTitle] = useState([]);
+  const [filteredProductsByCategory, setFilteredProductsByCategory] = useState(
+    []
+  );
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
   const [inputProductsByTitle, setInputProductsByTitle] = useState("");
-  const [filteredProducts, setFilteredProducts] = useState([]);
+
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -15,6 +21,8 @@ const useProducts = () => {
       );
       const data = await response.json();
       setProducts(data);
+      console.log(data);
+      setFilteredProductsByCategory(data);
       setIsLoading(false);
       setError(false);
     } catch (e) {
@@ -39,10 +47,16 @@ const useProducts = () => {
 
   useEffect(() => {
     if (inputProductsByTitle)
-      setFilteredProducts(
-        filterProductsByTitle(products, inputProductsByTitle)
+      setFilteredProductsByTitle(
+        filterProductsByTitle(filteredProductsByCategory, inputProductsByTitle)
       );
   }, [inputProductsByTitle]);
+
+  useEffect(() => {
+    setFilteredProductsByCategory(
+      products.filter((product) => product.category === selectedCategory)
+    );
+  }, [selectedCategory]);
 
   return {
     products,
@@ -50,8 +64,10 @@ const useProducts = () => {
     error,
     setInputProductsByTitle,
     inputProductsByTitle,
-    filteredProducts,
+    filteredProductsByTitle,
+    filteredProductsByCategory,
     clearError,
+    setSelectedCategory,
   };
 };
 
