@@ -6,17 +6,20 @@ import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import { ShoppingCartContext } from "../../Contexts/ShoppingCartProvider";
 
 const navProductCategories = [
-  { path: "/", text: "All" },
-  { path: "/electronics", text: "Electronics" },
-  { path: "/jewelery", text: "Jewelery" },
-  { path: "/mens-clothing", text: "Men's Clothing" },
-  { path: "/womens-clothing", text: "Women's Clothing" },
+  { path: "/React-Vite-Tailwind-Platzi/", text: "All" },
+  { path: "/React-Vite-Tailwind-Platzi/electronics", text: "Electronics" },
+  { path: "/React-Vite-Tailwind-Platzi/jewelery", text: "Jewelery" },
+  { path: "/React-Vite-Tailwind-Platzi/mens-clothing", text: "Men's Clothing" },
+  {
+    path: "/React-Vite-Tailwind-Platzi/womens-clothing",
+    text: "Women's Clothing",
+  },
 ];
 
 const navRightPages = [
-  { path: "/my-orders", text: "My Orders" },
-  { path: "/my-account", text: "My Account" },
-  { path: "/sign-in", text: "Sign In" },
+  { path: "/React-Vite-Tailwind-Platzi/my-orders", text: "My Orders" },
+  { path: "/React-Vite-Tailwind-Platzi/my-account", text: "My Account" },
+  { path: "/React-Vite-Tailwind-Platzi/sign-in", text: "Sign In" },
 ];
 
 const NavItem = ({ path, text }) => (
@@ -49,7 +52,7 @@ const NavBar = () => {
     <nav className='bg-white border-gray-200 dark:bg-gray-900 dark:text-white flex justify-between items-center fixed z-20 top-0 w-full py-5 px-8 text-sm font-light'>
       <ul className='gap-3 flex items-center'>
         <li className='font-semibold'>
-          <NavLink to={"/"}>Shopi</NavLink>
+          <NavLink to={"/React-Vite-Tailwind-Platzi/"}>Shopi</NavLink>
         </li>
         {renderNavItems(navProductCategories)}
       </ul>

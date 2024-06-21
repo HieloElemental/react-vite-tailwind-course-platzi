@@ -14,7 +14,10 @@ const MyOrders = () => {
 
       {orders.map(({ totalPrice, totalProducts, date }, index) => {
         return (
-          <Link to={`/my-orders/${index}`} key={`${date}${index}`}>
+          <Link
+            to={`/React-Vite-Tailwind-Platzi/my-orders/${index}`}
+            key={`${date}${index}`}
+          >
             <OrdersCard
               totalPrice={totalPrice}
               totalProducts={totalProducts}

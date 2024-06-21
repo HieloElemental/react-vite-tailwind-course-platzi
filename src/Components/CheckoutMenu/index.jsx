@@ -45,7 +45,7 @@ const CheckoutMenu = () => {
             ${calcTotalPrice(cartProducts)}
           </span>
         </p>
-        <Link to='/my-orders/last'>
+        <Link to='/React-Vite-Tailwind-Platzi/my-orders/last'>
           <button
             className='bg-white py-3 text-black w-full rounded-lg'
             onClick={handleCheckoutOrder}
