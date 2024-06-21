@@ -2,12 +2,8 @@ import { useEffect, useState } from "react";
 
 const useProducts = () => {
   const [products, setProducts] = useState([]);
-  const [filteredProductsByTitle, setFilteredProductsByTitle] = useState([]);
-  const [filteredProductsByCategory, setFilteredProductsByCategory] = useState(
-    []
-  );
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
-
   const [inputProductsByTitle, setInputProductsByTitle] = useState("");
 
   const [isLoading, setIsLoading] = useState(true);
@@ -20,11 +16,9 @@ const useProducts = () => {
         "https://fakestoreapi.com/products?limit=40"
       );
       const data = await response.json();
-      setProducts(data);
-      console.log(data);
-      setFilteredProductsByCategory(data);
+      await setProducts(data);
       setIsLoading(false);
-      setError(false);
+      setError(null);
     } catch (e) {
       setIsLoading(false);
       setError(e);
@@ -35,10 +29,30 @@ const useProducts = () => {
     setError(false);
   };
 
-  const filterProductsByTitle = (products, query) => {
-    return products.filter((product) =>
-      product.title.toLowerCase().includes(query.toLowerCase())
+  const filterProducts = (products, category, titleQuery) => {
+    let filtered = [...products];
+
+    if (category)
+      filtered = filtered.filter((product) => product.category === category);
+
+    if (titleQuery) {
+      filtered = filtered.filter((product) =>
+        product.title.toLowerCase().includes(titleQuery.toLowerCase())
+      );
+    }
+
+    return filtered;
+  };
+
+  const applyFilters = () => {
+    setFilteredProducts(
+      filterProducts(products, selectedCategory, inputProductsByTitle)
     );
+  };
+
+  const handleCategoryChange = async (category) => {
+    await setSelectedCategory(category);
+    applyFilters();
   };
 
   useEffect(() => {
@@ -46,17 +60,8 @@ const useProducts = () => {
   }, [error]);
 
   useEffect(() => {
-    if (inputProductsByTitle)
-      setFilteredProductsByTitle(
-        filterProductsByTitle(filteredProductsByCategory, inputProductsByTitle)
-      );
-  }, [inputProductsByTitle]);
-
-  useEffect(() => {
-    setFilteredProductsByCategory(
-      products.filter((product) => product.category === selectedCategory)
-    );
-  }, [selectedCategory]);
+    applyFilters();
+  }, [products, selectedCategory, inputProductsByTitle]);
 
   return {
     products,
@@ -64,10 +69,9 @@ const useProducts = () => {
     error,
     setInputProductsByTitle,
     inputProductsByTitle,
-    filteredProductsByTitle,
-    filteredProductsByCategory,
+    filteredProducts,
     clearError,
-    setSelectedCategory,
+    setSelectedCategory: handleCategoryChange,
   };
 };
 

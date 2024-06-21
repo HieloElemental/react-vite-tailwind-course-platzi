@@ -13,8 +13,7 @@ const Home = ({ category = null }) => {
     clearError,
     inputProductsByTitle,
     setInputProductsByTitle,
-    filteredProductsByTitle,
-    filteredProductsByCategory,
+    filteredProducts,
     setSelectedCategory,
   } = useProducts();
 
@@ -48,19 +47,12 @@ const Home = ({ category = null }) => {
         {!inputProductsByTitle &&
           !category &&
           products.map((data) => <Card key={data.id} data={data} />)}
-        {!inputProductsByTitle &&
-          category &&
-          filteredProductsByCategory.map((data) => (
-            <Card key={data.id} data={data} />
-          ))}
-        {inputProductsByTitle && filteredProductsByTitle.length === 0 && (
+        {inputProductsByTitle && filteredProducts.length === 0 && (
           <p>No products found</p>
         )}
-        {inputProductsByTitle &&
-          filteredProductsByTitle.length > 0 &&
-          filteredProductsByTitle.map((data) => (
-            <Card key={data.id} data={data} />
-          ))}
+        {(inputProductsByTitle || category) &&
+          filteredProducts.length > 0 &&
+          filteredProducts.map((data) => <Card key={data.id} data={data} />)}
       </div>
     </>
   );

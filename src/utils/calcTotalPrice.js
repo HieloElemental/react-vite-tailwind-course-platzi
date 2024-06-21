@@ -8,7 +8,7 @@ const calcTotalPrice = (products) => {
   const totalPrice = products.reduce((acc, product) => {
     return acc + product.price;
   }, 0);
-  return totalPrice;
+  return totalPrice.toFixed(2);
 };
 
 export { calcTotalPrice };

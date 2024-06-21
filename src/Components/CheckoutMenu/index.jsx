@@ -42,7 +42,7 @@ const CheckoutMenu = () => {
         <p className='flex justify-between items-center mb-2'>
           <span className='font-light'>Total:</span>
           <span className='font-medium text-2xl'>
-            ${calcTotalPrice(cartProducts).toFixed(2)}
+            ${calcTotalPrice(cartProducts)}
           </span>
         </p>
         <Link to='/my-orders/last'>

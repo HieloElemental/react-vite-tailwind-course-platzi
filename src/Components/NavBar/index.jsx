@@ -37,7 +37,7 @@ NavItem.propTypes = {
 };
 
 const NavBar = () => {
-  const { count } = useContext(ShoppingCartContext);
+  const { cartProducts } = useContext(ShoppingCartContext);
 
   const renderNavItems = (navItems) => {
     return navItems.map(({ path, text }) => {
@@ -59,7 +59,7 @@ const NavBar = () => {
         {renderNavItems(navRightPages)}
         <li className='flex items-center justify-center'>
           <ShoppingCartIcon className='size-4' />
-          <span>{count}</span>
+          <span>{cartProducts.length}</span>
         </li>
       </ul>
     </nav>
