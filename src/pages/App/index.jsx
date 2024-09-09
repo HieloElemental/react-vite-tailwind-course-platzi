@@ -18,28 +18,37 @@ import "./App.css";
 
 const AppRoutes = () => {
   return useRoutes([
-    { path: "/React-Vite-Tailwind-Platzi/", element: <Home /> },
+    { path: "/react-vite-tailwind-course-platzi/", element: <Home /> },
     {
-      path: "/React-Vite-Tailwind-Platzi/electronics",
+      path: "/react-vite-tailwind-course-platzi/electronics",
       element: <Home category='electronics' />,
     },
     {
-      path: "/React-Vite-Tailwind-Platzi/jewelery",
+      path: "/react-vite-tailwind-course-platzi/jewelery",
       element: <Home category='jewelery' />,
     },
     {
-      path: "/React-Vite-Tailwind-Platzi/mens-clothing",
+      path: "/react-vite-tailwind-course-platzi/mens-clothing",
       element: <Home category={`men's clothing`} />,
     },
     {
-      path: "/React-Vite-Tailwind-Platzi/womens-clothing",
+      path: "/react-vite-tailwind-course-platzi/womens-clothing",
       element: <Home category={`women's clothing`} />,
     },
-    { path: "/React-Vite-Tailwind-Platzi/my-account", element: <MyAccount /> },
-    { path: "/React-Vite-Tailwind-Platzi/my-orders", element: <MyOrders /> },
-    { path: "/React-Vite-Tailwind-Platzi/my-orders/:id", element: <MyOrder /> },
-    { path: "/React-Vite-Tailwind-Platzi/sign-in", element: <SignIn /> },
-    { path: "/React-Vite-Tailwind-Platzi/*", element: <NotFound /> },
+    {
+      path: "/react-vite-tailwind-course-platzi/my-account",
+      element: <MyAccount />,
+    },
+    {
+      path: "/react-vite-tailwind-course-platzi/my-orders",
+      element: <MyOrders />,
+    },
+    {
+      path: "/react-vite-tailwind-course-platzi/my-orders/:id",
+      element: <MyOrder />,
+    },
+    { path: "/react-vite-tailwind-course-platzi/sign-in", element: <SignIn /> },
+    { path: "/react-vite-tailwind-course-platzi/*", element: <NotFound /> },
   ]);
 };
 

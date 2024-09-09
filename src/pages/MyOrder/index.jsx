@@ -18,7 +18,7 @@ const MyOrder = () => {
     <Layout>
       <div className='flex items-center justify-center relative w-80 mb-6'>
         <Link
-          to='/React-Vite-Tailwind-Platzi/my-orders'
+          to='/react-vite-tailwind-course-platzi/my-orders'
           className='absolute left-0'
         >
           <ChevronLeftIcon className='h-6 w-6 text-white cursor-pointer' />

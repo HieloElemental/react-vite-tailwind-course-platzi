@@ -6,20 +6,26 @@ import { ShoppingCartIcon } from "@heroicons/react/24/solid";
 import { ShoppingCartContext } from "../../Contexts/ShoppingCartProvider";
 
 const navProductCategories = [
-  { path: "/React-Vite-Tailwind-Platzi/", text: "All" },
-  { path: "/React-Vite-Tailwind-Platzi/electronics", text: "Electronics" },
-  { path: "/React-Vite-Tailwind-Platzi/jewelery", text: "Jewelery" },
-  { path: "/React-Vite-Tailwind-Platzi/mens-clothing", text: "Men's Clothing" },
+  { path: "/react-vite-tailwind-course-platzi/", text: "All" },
   {
-    path: "/React-Vite-Tailwind-Platzi/womens-clothing",
+    path: "/react-vite-tailwind-course-platzi/electronics",
+    text: "Electronics",
+  },
+  { path: "/react-vite-tailwind-course-platzi/jewelery", text: "Jewelery" },
+  {
+    path: "/react-vite-tailwind-course-platzi/mens-clothing",
+    text: "Men's Clothing",
+  },
+  {
+    path: "/react-vite-tailwind-course-platzi/womens-clothing",
     text: "Women's Clothing",
   },
 ];
 
 const navRightPages = [
-  { path: "/React-Vite-Tailwind-Platzi/my-orders", text: "My Orders" },
-  { path: "/React-Vite-Tailwind-Platzi/my-account", text: "My Account" },
-  { path: "/React-Vite-Tailwind-Platzi/sign-in", text: "Sign In" },
+  { path: "/react-vite-tailwind-course-platzi/my-orders", text: "My Orders" },
+  { path: "/react-vite-tailwind-course-platzi/my-account", text: "My Account" },
+  { path: "/react-vite-tailwind-course-platzi/sign-in", text: "Sign In" },
 ];
 
 const NavItem = ({ path, text }) => (
